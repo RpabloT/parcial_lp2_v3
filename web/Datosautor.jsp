@@ -3,6 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+   
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Autores</title>
@@ -13,6 +14,7 @@
             ResultSet rs;
             String s_accion;
             String s_idautor;
+             //Datos autor _ eliminar
         %>
     </head>
     <body>
