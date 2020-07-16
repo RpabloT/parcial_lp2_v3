@@ -54,11 +54,9 @@
         <thead>
             
                 <tr>
-                    <th colspan="8">Datos Autor</th>
+                    <th colspan="4">Datos Autor</th>
                 </tr>    
-                    
-                    
-                    
+                  
                     <th> Nro </th>
                     <th> Nombre </th>
                     <th> Fecha de Nacimiento </th>
@@ -123,14 +121,19 @@
                     <td><a href="Datosautor.jsp?f_accion=E&f_idautor=<%out.print(ide);%>">Eliminar</a></td>
                     
                 </tr>
-                
+                 
                 <%
+                    
                     }
             }catch(Exception e){
                 out.print("Error SQL");
             }
         
         %>
+                <tr>
+                    <th colspan="4"><a href="menu.jsp">atras</a></th>
+                </tr>
         </table>
+        
     </body>
 </html>

@@ -62,7 +62,7 @@
                     <th>Nombre</th>
                     <th>Estado</th>
                     <th>Eliminar</th>
-                    <th>Editar</th>
+                    
                     
                 </tr>
             </thead>      
@@ -118,7 +118,7 @@
                     <td><% out.print(rs.getString(2)); %></td>
                     <td><% out.print(rs.getString(3)); %></td>
                     <td><a href="Datospais.jsp?f_accion=E&f_idpais=<%out.print(ide);%>">Eliminar</a></td>
-                    <td>Editar</td>
+
                 </tr>
                 <%
                     }
@@ -127,6 +127,9 @@
             }
         
         %>
+                <tr>
+                    <th colspan="4"><a href="menu.jsp">atras</a></th>
+                </tr>
         </table>
     </body>
 </html>
