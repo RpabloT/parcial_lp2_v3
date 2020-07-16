@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Datoseditorial
-    Created on : 24-jun-2020, 18:36:52
-    Author     : Lord Redlawer
---%>
 <%@page import="java.sql.*" %>
 <%@page import="bd.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,13 +11,15 @@
             Connection cn;
             PreparedStatement pst;
             ResultSet rs;
+            String s_accion;
+            String s_ideditorial;
         %>
     </head>
     <body>
         <table border="1">
             <thead>
                 <tr>
-                    <th colspan="3">Editoriales</th>
+                    <th colspan="4">Editoriales</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,23 +27,41 @@
                     <td> Nro </td>
                     <td> Nombre </td>
                     <td> Estado </td>
+                    <td> Eliminar </td>
                 </tr>
                 <tr>
                     <%
                     try{
                         ConectaBd bd = new ConectaBd();
                         cn = bd.getConnection();
+                        
+                        s_accion = request.getParameter("f_accion");
+                        s_ideditorial = request.getParameter("f_ideditorial");
+                        
+                        if (s_accion!=null) {
+                                consulta =  " delete from editorial "
+                                    + " where "
+                                    + " ideditorial = " + s_ideditorial + "; ";
+                                //out.print(consulta);
+                                pst = cn.prepareStatement(consulta);
+                                pst.executeUpdate();          
+                        }
                         consulta = "select ideditorial, nombre, estado "
-                                 + "from editorial order by nombre";
+                                 + " from editorial";
                         //out.print(consulta);
                         pst = cn.prepareStatement(consulta);
                         rs = pst.executeQuery();
-                        while(rs.next()){  
-                %>
+                        int num = 0;
+                        String ide;
+                        while(rs.next()){
+                            ide = rs.getString(1);
+                            num++;
+                    %>
                 <tr>
-                    <td><% out.print(rs.getString(1)); %></td>
+                    <td><% out.print(num); %></td>
                     <td><% out.print(rs.getString(2)); %></td>
                     <td><% out.print(rs.getString(3)); %></td>
+                    <td><a href="Datoseditorial.jsp?f_accion=E&f_ideditorial=<%out.print(ide);%>">Eliminar</a></td>
                 </tr>
                 <%
                         }
@@ -57,7 +72,7 @@
                         out.print("Error SQL");
                     }
                 %>
-                </tr>
+                
             </tbody>
         </table>
 

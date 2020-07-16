@@ -123,6 +123,7 @@
                     <td><a href="Datosautor.jsp?f_accion=E&f_idautor=<%out.print(ide);%>">Eliminar</a></td>
                     
                 </tr>
+                
                 <%
                     }
             }catch(Exception e){
